@@ -12,7 +12,7 @@ from PIL import ImageDraw
 
 def createFlyer(title, event_type, datum, image_url=None):
     namebydate = datum.split(', ')[1].replace('.','-')
-    image_name = Path(home, 'images', title.replace(' ','-') + '-' + namebydate + '.jpg' )
+    image_name = Path(home, 'images', namebydate + '.jpg' )
     print(image_name)
     urlretrieve( image_url, image_name )
 
