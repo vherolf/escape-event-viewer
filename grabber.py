@@ -1,11 +1,10 @@
 url="https://www.escape-metalcorner.at/de/events"
 
 from bs4 import BeautifulSoup
-from urllib.request import urlopen
+from urllib.request import urlopen, urlretrieve
 
 from os.path import expanduser
 from pathlib import Path
-
 
 home = Path.home()
 playlist = Path(home, 'playlist')
@@ -23,12 +22,15 @@ print(type(events))
 for event in events:
     datum = event.h2.text
     print("Datum:",  datum)
+    print(datum.split(', '))
 
     title = event.div.div.a.div.img['title']
     print("Title:", title)
 
     image_url = event.div.div.a.div.img['src'].replace('thumb.jpg','fullsize.jpg')
-    print("image full:", image_url) 
+    print("image full:", image_url)
+    image_name = datum.split(', ')[1].replace('.','-')+'.jpg'
+    urlretrieve( image_url, image_name )
     event_type = event.find('div').find_next('div').find_next('div').find_next('div').p.text 
     print("Event type:", event_type)
 
