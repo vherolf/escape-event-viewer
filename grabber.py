@@ -32,9 +32,10 @@ def createFlyer(title, event_type, datum, image_url=None):
     draw = ImageDraw.Draw(img)
     # font = ImageFont.truetype(<font-file>, <font-size>)
     print("FONT PATH: ", font_path)
-    font = ImageFont.truetype(font_path, 40)
+    font = ImageFont.truetype(font_path, 70)
     # draw.text((x, y),"Sample Text",(r,g,b))
     draw.text((20, 200),title ,(255,255,255),font=font)
+    font = ImageFont.truetype(font_path, 50)
     draw.text((800, 400),datum ,(255,255,255),font=font)
     img.save(image_name)
 
