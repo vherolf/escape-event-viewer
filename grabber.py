@@ -11,10 +11,12 @@ from pathlib import Path
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw 
-import os
-grabber_path = os.path.realpath(__file__)
-cwd = os.getcwd()
-font_path = str(Path(cwd, "MetalMania-Regular.ttf"))
+
+# Path object for the current file
+current_file = Path(__file__)
+# Get the directory of the current file
+current_dir_of_file = current_file.parent
+font_path = str(Path(current_dir_of_file, "MetalMania-Regular.ttf"))
 
 
 def createFlyer(title, event_type, datum, image_url=None):
