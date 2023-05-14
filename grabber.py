@@ -15,6 +15,7 @@ import os
 grabber_path = os.path.realpath(__file__)
 font_path = Path(grabber_path, "MetalMania-Regular.ttf")
 
+
 def createFlyer(title, event_type, datum, image_url=None):
     namebydate = datum.split(', ')[1].replace('.','-')
     image_name = Path(home, 'images', namebydate + '.jpg' )
@@ -24,6 +25,7 @@ def createFlyer(title, event_type, datum, image_url=None):
     img = Image.open(image_name)
     draw = ImageDraw.Draw(img)
     # font = ImageFont.truetype(<font-file>, <font-size>)
+    print("FONT PATH: ", font_path)
     font = ImageFont.truetype(font_path, 40)
     # draw.text((x, y),"Sample Text",(r,g,b))
     draw.text((0, 0),title ,(255,255,255),font=font)
