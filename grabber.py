@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 url="https://www.escape-metalcorner.at/de/events"
 
 from bs4 import BeautifulSoup
