@@ -13,7 +13,8 @@ from PIL import ImageFont
 from PIL import ImageDraw 
 import os
 grabber_path = os.path.realpath(__file__)
-font_path = Path(grabber_path, "MetalMania-Regular.ttf")
+cwd = os.getcwd()
+font_path = str(Path(cwd, "MetalMania-Regular.ttf"))
 
 
 def createFlyer(title, event_type, datum, image_url=None):
