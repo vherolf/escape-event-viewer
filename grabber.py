@@ -22,16 +22,20 @@ font_path = str(Path(current_dir_of_file, "MetalMania-Regular.ttf"))
 def createFlyer(title, event_type, datum, image_url=None):
     namebydate = datum.split(', ')[1].replace('.','-')
     image_name = Path(home, 'images', namebydate + '.jpg' )
-    print(image_name)
-    urlretrieve( image_url, image_name )
 
-    img = Image.open(image_name)
+    if image_url == None:
+        img = Image.new(mode="RGB", size=(800, 600))
+    else:
+        urlretrieve( image_url, image_name )
+        img = Image.open(image_name)
+
     draw = ImageDraw.Draw(img)
     # font = ImageFont.truetype(<font-file>, <font-size>)
     print("FONT PATH: ", font_path)
     font = ImageFont.truetype(font_path, 40)
     # draw.text((x, y),"Sample Text",(r,g,b))
-    draw.text((0, 0),title ,(255,255,255),font=font)
+    draw.text((0, 200),title ,(255,255,255),font=font)
+    draw.text((0, 600),datum ,(255,255,255),font=font)
     img.save(image_name)
 
 home = Path.home()
@@ -61,6 +65,8 @@ for event in events:
     event_type = event.find('div').find_next('div').find_next('div').find_next('div').p.text 
     print("Event type:", event_type)
 
+    if image_url == "https://www.escape-metalcorner.at/flyer/none/fullsize.jpg":
+        image_url = None
     createFlyer(title, event_type, datum, image_url)
 
 
