@@ -29,7 +29,7 @@ for event in events:
 
     image_url = event.div.div.a.div.img['src'].replace('thumb.jpg','fullsize.jpg')
     print("image full:", image_url)
-    image_name = datum.split(', ')[1].replace('.','-')+'.jpg'
+    image_name = Path(home, 'images', datum.split(', ')[1].replace('.','-')+'.jpg' )
     urlretrieve( image_url, image_name )
     event_type = event.find('div').find_next('div').find_next('div').find_next('div').p.text 
     print("Event type:", event_type)
