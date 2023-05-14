@@ -24,7 +24,7 @@ def createFlyer(title, event_type, datum, image_url=None):
     image_name = Path(home, 'images', namebydate + '.jpg' )
 
     if image_url == None:
-        img = Image.new(mode="RGB", size=(800, 600))
+        img = Image.new(mode="RGB", size=(1280, 720))
     else:
         urlretrieve( image_url, image_name )
         img = Image.open(image_name)
@@ -34,8 +34,8 @@ def createFlyer(title, event_type, datum, image_url=None):
     print("FONT PATH: ", font_path)
     font = ImageFont.truetype(font_path, 40)
     # draw.text((x, y),"Sample Text",(r,g,b))
-    draw.text((0, 200),title ,(255,255,255),font=font)
-    draw.text((0, 600),datum ,(255,255,255),font=font)
+    draw.text((20, 200),title ,(255,255,255),font=font)
+    draw.text((800, 400),datum ,(255,255,255),font=font)
     img.save(image_name)
 
 home = Path.home()
